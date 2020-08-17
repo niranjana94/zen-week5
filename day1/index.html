@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallBack</title>
+    <style>
+        .background{
+            width: 1000px;
+            height: 600px;            
+            justify-content: center;
+            display: flex;
+            background-image: url(background_2.jpg);
+        }
+        .timer{
+            display: inline-block;            
+            justify-content: center;
+            position: absolute;
+            top:100px;
+            color: white;
+            font-size:70px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var div = document.createElement('div');
+        div.classList.add('background');
+
+        var para = document.createElement('p');
+        para.id = 'timer';
+        para.classList.add('timer');
+
+        div.append(para);
+        document.body.append(div);
+      
+        var display = document.getElementById('timer');
+        function timer(count, cb ) {        
+            setTimeout(function(){
+                if(count== 0 )
+                {
+                   //console.log('end');
+                   display.innerText = 'Happy Independence Day';
+                }   
+                else
+                {             
+                 //console.log(count);
+                 display.innerText = count;
+                 count = count - 1;
+                cb(count);
+                }
+            }, 1000);
+        }
+
+      timer(10,function(count){
+          timer(count,function (count) { 
+            timer(count,function (count) {
+                timer(count,function (count) {
+                    timer(count,function (count) {
+                        timer(count,function (count) {
+                            timer(count,function (count) {
+                                timer(count,function (count) {
+                                    timer(count,function (count) {
+                                        timer(count,function (count) {
+                                            timer(count,function (count) {
+                                            });
+                                        });
+                                    });
+                                }); 
+                            });
+                        });
+                    });
+                }); 
+            });      
+          });
+	 
+	  });
+
+        
+
+    </script>
+</body>
+</html>
+
