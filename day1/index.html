@@ -10,14 +10,13 @@
             height: 600px;            
             justify-content: center;
             display: flex;
-            background-image: url(background_2.jpg);
+            
         }
         .timer{
-            display: inline-block;            
+            display: flex;            
             justify-content: center;
-            position: absolute;
-            top:100px;
-            color: white;
+            position: absolute;           
+            color: black;
             font-size:70px;
         }
     </style>
@@ -40,6 +39,8 @@
                 if(count== 0 )
                 {
                    //console.log('end');
+                   display.setAttribute('style','width: 1000px;height: 600px; color:white;')
+                   display.style.backgroundImage = "url('background_2.jpg')";
                    display.innerText = 'Happy Independence Day';
                 }   
                 else
@@ -81,4 +82,6 @@
     </script>
 </body>
 </html>
+
+
 
