@@ -33,10 +33,11 @@ function xmlrequest(method, url) {
 xmlrequest('GET', 'https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json')
     .then(data => {
         //console.log(JSON.parse(data));
-        data.forEach((item) => {
             var container = document.createElement('div');
             container.classList.add('container');
             container.style.objectFit='fill';
+        data.forEach((item) => {
+            
             var divcarddeck = document.createElement('div');
             divcarddeck.classList.add('card-deck');
 
@@ -56,13 +57,14 @@ xmlrequest('GET', 'https://raw.githubusercontent.com/rvsp/restcountries-json-dat
             var para = document.createElement('p');
             para.classList.add('card-text');
             para.innerHTML = 'Capital:' + item['capital'] + '<br> Region:' + item['region'];
-            //para.innerHTML +='<br> Currency:' +item['currencies'].childNodes.forEach((item1)=>{item1['code']+item1['name']+item1['symbol']});     
+            para.innerHTML +='<br> Currency:' +item['currencies'].filter((a) => a.name).map((a) =>`${a.symbol} ${a.name} ${a.code}`).join(", ");       
             divbody.append(header, para);
             divcard.append(image, divbody);
             divcarddeck.append(divcard);
             container.append(divcarddeck);
-            document.body.append(container);
+            
         })
+             document.body.append(container);
     })
     .catch(function (error) {
         console.log('Something went wrong', error);
